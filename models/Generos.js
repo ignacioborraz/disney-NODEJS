@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize')
-const sequelize = require('../database/db')
+const {DataTypes, Sequelize} = require('sequelize')
+const sequelize = require('../server')
 
-const Genero = sequelize.define('Genero', {
+const Genero = Sequelize.define('Genero', {
     imagen: {
         type: DataTypes.STRING,
         allowNull: false
@@ -10,7 +10,7 @@ const Genero = sequelize.define('Genero', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    pelisSerie: {
+    peliSerie: {
         type: DataTypes.STRING,
         allowNull: false
     },
