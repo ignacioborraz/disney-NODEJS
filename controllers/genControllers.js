@@ -1,4 +1,4 @@
-const Genero = require("../models/Generos")
+const Genero = require("../models/genero")
 
 const generoControllers = {
 
@@ -90,4 +90,4 @@ const generoControllers = {
 
 }
 
-module.exports = petControllers
+module.exports = generoControllers

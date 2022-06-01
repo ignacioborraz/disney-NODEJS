@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "Hola1234",
+    "database": "disney",
+    "host": "disney.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "Hola1234",
+    "database": "disney",
+    "host": "disney.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "Hola1234",
+    "database": "disney",
+    "host": "disney.cxljsz2vrjvw.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
+}
