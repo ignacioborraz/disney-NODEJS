@@ -16,7 +16,7 @@ router.delete('/personaje/eliminar/:id', eliminarPersonaje)
 
 const {listarPeliSeries,unaPeliSerie,crearPeliSerie,modificarPeliSerie,eliminarPeliSerie} = require('../controllers/peliControllers')
 router.get('/peliSerie/listar', listarPeliSeries)
-router.get('/peliSerie/listar/:id', unPeliSerie)
+router.get('/peliSerie/listar/:id', unaPeliSerie)
 router.put('/peliSerie/modificar/:id', modificarPeliSerie)
 router.post('/peliSerie/crear', crearPeliSerie)
 router.delete('/peliSerie/eliminar/:id', eliminarPeliSerie)
