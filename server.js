@@ -19,7 +19,7 @@ const sequelize = new Sequelize(database.database,database.username,database.pas
 app.get('/', (req,res)=> res.send('DISNEY API'))
 app.use(cors())
 app.use(express.json())
-app.use('/api', Router)
+app.use('/', Router)
 app.listen(app.get('port'), async function() {
     console.log('SERVER READY ON PORT '+app.get('port'))
     sequelize.authenticate()

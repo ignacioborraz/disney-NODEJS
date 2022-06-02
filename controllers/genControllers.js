@@ -1,4 +1,5 @@
-const Genero = require("../models/genero")
+const db = require("../models")
+const Genero = db.Genero
 
 const generoControllers = {
 
@@ -13,80 +14,55 @@ const generoControllers = {
         }
     },
 
-/*     listPets: async (req,res)=>{
+    listarGeneros: async (req,res)=>{
         try {
-            let pets = await Pet.findAll()
-            if (pets) {
-                let responses = {
-                    code: 200,
-                    description: "A paged array of pets",
-                    content: pets
-                }
-                return res.status(200).json(responses)
-            } else {
-                return res.status(404).json({code: 404, message: "null response"})
-            }
+            let generos = await Genero.findAll()
+            return res.status(200).json(generos)
         } catch(error) {
-            return res.status(400).json({code: 400, message: "unexpected error"})
+            return res.status(400).json(error)
         }
     },
 
-    showPetById: async (req,res)=>{
+    unGenero: async (req,res)=>{
         let id = req.params.id
         try {
-            let pet = await Pet.findOne({where: {id:id}})
-            if (pet) {
-                let responses = {
-                    code: 200,
-                    description: "Expected response to a valid request",
-                    content: pet
-                }
-                return res.status(200).json(responses)
-            } else {
-                return res.status(404).json({code: 404, description: "not found"})
-            }
+            let genero = await Genero.findOne({where: {id:id}})
+            return res.status(200).json(genero)
         } catch(error) {
-            return res.status(400).json({code: 400, message: "unexpected error"})
+            return res.status(400).json(error)
         }
     },
 
-    updatePetById: async (req,res)=>{
+    modificarGenero: async (req,res)=>{
         let id = req.params.id
+        let {imagen,nombre,peliSerie} = req.body
         try {
-            let pet = await Pet.findOne({where: {id:id}})
-            if (pet) {
-                await Pet.update(req.body, {where: {id:id}})
-                let responses = {
-                    code: 201,
-                    description: "null response"
-                }
-                return res.status(201).json(responses)
-            } else {
-                return res.status(404).json({code: 404, description: "not found"})
+            let genero = await Genero.findOne({where: {id:id}})
+            try {
+                let generoModificado = await Genero.update(req.body, {where: {id:id}})
+                return res.status(200).json(generoModificado)
+            } catch(error) {
+                return res.status(400).json(error)
             }
         } catch(error) {
-            return res.status(400).json({code: 400, message: "unexpected error"})
+            return res.status(400).json(error)
         }
     },
 
-    deletePetById: async (req,res)=>{
+    eliminarGenero: async (req,res)=>{
         let id = req.params.id
         try {
-            let pet = await Pet.findOne({where: {id:id}})
-            if (pet) {
-                await Pet.destroy({where: {id:id}})
-                let responses = {
-                    code: 201,
-                    description: "null response"
-                }
-                return res.status(201).json(responses)
-            } else {
-                return res.status(404).json({code: 404, description: "not found"})
+            let genero = await Genero.findOne({where: {id:id}})
+            try {
+                let generoEliminado = await Genero.destroy({where: {id:id}})
+                return res.status(200).json(generoEliminado)
+            } catch(error) {
+                return res.status(400).json(error)
             }
         } catch(error) {
-            return res.status(400).json({code: 400, message: "unexpected error"})
+            return res.status(400).json(error)
         }
-    } */
+    } 
 
 }
 

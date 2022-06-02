@@ -1,9 +1,10 @@
 const router = require('express').Router()
-const {crearGenero} = require('../controllers/genControllers')
+const {listarGeneros,unGenero,crearGenero,modificarGenero,eliminarGenero} = require('../controllers/genControllers')
 
-/* router.get('/', index)
-router.get('/pets', listPets)
-router.get('/pets/:id', showPetById) */
-router.post('/crearGenero', crearGenero)
+router.get('/genero/listar', listarGeneros)
+router.get('/genero/listar/:id', unGenero)
+router.put('/genero/modificar/:id', modificarGenero)
+router.post('/genero/crear', crearGenero)
+router.delete('/genero/eliminar/:id', eliminarGenero)
 
 module.exports = router
