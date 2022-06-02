@@ -40,6 +40,7 @@ const generoControllers = {
             let genero = await Genero.findOne({where: {id:id}})
             try {
                 let generoModificado = await Genero.update(req.body, {where: {id:id}})
+                generoModificado = await Genero.findOne({where: {id:id}})
                 return res.status(200).json(generoModificado)
             } catch(error) {
                 return res.status(400).json(error)
@@ -55,7 +56,7 @@ const generoControllers = {
             let genero = await Genero.findOne({where: {id:id}})
             try {
                 let generoEliminado = await Genero.destroy({where: {id:id}})
-                return res.status(200).json(generoEliminado)
+                return res.status(200).json(genero)
             } catch(error) {
                 return res.status(400).json(error)
             }
