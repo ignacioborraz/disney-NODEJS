@@ -3,17 +3,6 @@ const Genero = db.Genero
 
 const generoControllers = {
 
-    crearGenero: async (req,res)=>{
-        let {imagen,nombre,peliSerie} = req.body
-        try {
-            let nuevoGenero = await Genero.create({imagen,nombre,peliSerie})
-            return res.status(201).json(nuevoGenero)
-        } catch(error) {
-            console.log(error)
-            return res.status(400).json(error)
-        }
-    },
-
     listarGeneros: async (req,res)=>{
         try {
             let generos = await Genero.findAll()
@@ -29,6 +18,17 @@ const generoControllers = {
             let genero = await Genero.findOne({where: {id:id}})
             return res.status(200).json(genero)
         } catch(error) {
+            return res.status(400).json(error)
+        }
+    },
+    
+    crearGenero: async (req,res)=>{
+        let {imagen,nombre,peliSerie} = req.body
+        try {
+            let nuevoGenero = await Genero.create({imagen,nombre,peliSerie})
+            return res.status(201).json(nuevoGenero)
+        } catch(error) {
+            console.log(error)
             return res.status(400).json(error)
         }
     },
