@@ -1,3 +1,4 @@
+const Pelicula = require("../models/pelicula")
 const Personaje = require("../models/personaje")
 
 const personajeControllers = {
@@ -16,10 +17,11 @@ const personajeControllers = {
         let id = req.params.id
         try {
             let personaje = await Personaje.findOne({where: {id:id}})
+                .then(personaje => personaje.getPelicula({atributes:['titulo']}))
+                .then(personajeConPeliculas => res.json(personajeConPeliculas))
             if (!personaje) {
                 return res.status(404).send('no encontrado')
             }
-            return res.status(200).json(personaje)
         } catch(error) {
             return res.status(500).json(error)
         }
