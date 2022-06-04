@@ -1,5 +1,4 @@
-const db = require("../models")
-const Genero = db.Genero
+const Genero = require("../models/genero")
 
 const generoControllers = {
 

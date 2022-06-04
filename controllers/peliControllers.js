@@ -1,5 +1,4 @@
-const db = require("../models")
-const PeliSerie = db.Pelicula
+const PeliSerie = require("../models/pelicula")
 
 const peliControllers = {
 

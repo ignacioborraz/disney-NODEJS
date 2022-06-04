@@ -1,24 +1,15 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Genero extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Genero.init({
-    imagen: DataTypes.STRING,
-    nombre: DataTypes.STRING
-  }, {
+'use strict'
+const {Model,DataTypes} = require('sequelize')
+const sequelize = require('../config/sequelize')
+
+class Genero extends Model {}
+Genero.init({
+    imagen: {type: DataTypes.STRING,allowNull: false},
+    nombre: {type: DataTypes.STRING,allowNull: false},
+},{
     sequelize,
     modelName: 'Genero',
-  });
-  return Genero;
-};
+    timestamps: false
+})
+
+module.exports = Genero

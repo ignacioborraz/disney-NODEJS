@@ -1,5 +1,4 @@
-const db = require("../models")
-const Personaje = db.Personaje
+const Personaje = require("../models/personaje")
 
 const personajeControllers = {
 
