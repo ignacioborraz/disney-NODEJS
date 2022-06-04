@@ -1,14 +1,15 @@
 const db = require("../models")
-const Personaje = db.Personajes
+const Personaje = db.Personaje
 
 const personajeControllers = {
 
     listarPersonajes: async (req,res)=>{
         try {
-            let personajes = await Personaje.findAll()
+            let personajes = await Personaje.findAll({attributes: ['imagen','nombre']})
+            console.log(personajes)
             return res.status(200).json(personajes)
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 
@@ -16,20 +17,23 @@ const personajeControllers = {
         let id = req.params.id
         try {
             let personaje = await Personaje.findOne({where: {id:id}})
+            if (!personaje) {
+                return res.status(404).send('no encontrado')
+            }
             return res.status(200).json(personaje)
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
     
     crearPersonaje: async (req,res)=>{
         let {imagen,nombre,edad,peso,historia,peliSerie} = req.body
         try {
-            let nuevoPersonaje = await Personaje.create({imagen,nombre,edad,peso,historia,peliSerie})
-            return res.status(201).json(nuevoPersonaje)
+            await Personaje.create({imagen,nombre,edad,peso,historia,peliSerie})
+            return res.status(201).send('personaje creado')
         } catch(error) {
             console.log(error)
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 
@@ -37,31 +41,38 @@ const personajeControllers = {
         let id = req.params.id
         let {imagen,nombre,edad,peso,historia,peliSerie} = req.body
         try {
-            let personaje = await Personaje.findOne({where: {id:id}})
-            try {
-                let personajeModificado = await Personaje.update(req.body, {where: {id:id}})
-                personajeModificado = await Personaje.findOne({where: {id:id}})
-                return res.status(200).json(personajeModificado)
-            } catch(error) {
-                return res.status(400).json(error)
+            let personajeModificado = await Personaje.findOne({where: {id:id}})
+            if (!personajeModificado) {
+                return res.status(404).send('no encontrado')
+            } else {
+                try {
+                    await Personaje.update({imagen,nombre,edad,peso,historia,peliSerie}, {where: {id:id}})
+                    return res.status(200).send('personaje modificado')
+                } catch(error) {
+                    return res.status(500).json(error)
+                }
             }
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 
     eliminarPersonaje: async (req,res)=>{
         let id = req.params.id
         try {
-            let personaje = await Personaje.findOne({where: {id:id}})
-            try {
-                let personajeEliminado = await Personaje.destroy({where: {id:id}})
-                return res.status(200).json(personaje)
-            } catch(error) {
-                return res.status(400).json(error)
+            let personajeAeliminar = await Personaje.findOne({where: {id:id}})
+            if (!personajeAeliminar) {
+                return res.status(404).send('no encontrado')
+            } else {
+                try {
+                    await Personaje.destroy({where: {id:id}})
+                    return res.status(200).send('personaje eliminado')
+                } catch(error) {
+                    return res.status(500).json(error)
+                }
             }
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     } 
 

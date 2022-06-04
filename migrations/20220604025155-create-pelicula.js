@@ -9,28 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       imagen: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       titulo: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      genero: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       calificacion: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       creacion: {
-        allowNull: false,
         type: Sequelize.DATE
-      },
-      personajes: {
-        allowNull: false,
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

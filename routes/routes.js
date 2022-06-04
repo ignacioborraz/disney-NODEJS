@@ -8,7 +8,7 @@ router.post('/genero/crear', crearGenero)
 router.delete('/genero/eliminar/:id', eliminarGenero)
 
 const {listarPersonajes,unPersonaje,crearPersonaje,modificarPersonaje,eliminarPersonaje} = require('../controllers/perControllers')
-router.get('/personaje/listar', listarPersonajes)
+router.get('/characters', listarPersonajes)
 router.get('/personaje/listar/:id', unPersonaje)
 router.put('/personaje/modificar/:id', modificarPersonaje)
 router.post('/personaje/crear', crearPersonaje)

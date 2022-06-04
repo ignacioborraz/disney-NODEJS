@@ -1,6 +1,7 @@
 const {Sequelize} = require('sequelize')
 const {database} = require ('./config')
 const Router = require('./routes/routes')
+require('./config/associations')
 
 const express = require('express')
 const app = express()
@@ -22,7 +23,7 @@ app.use(express.json())
 app.use('/', Router)
 app.listen(app.get('port'), async function() {
     console.log('SERVER READY ON PORT '+app.get('port'))
-    sequelize.authenticate()
+    sequelize.sync({force:true})
         .then(() => console.log('DATABASE CONNECTED'))
         .catch((error) => console.log(error))
 })
