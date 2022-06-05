@@ -1,23 +1,40 @@
-const PeliSerie = require("../models/pelicula")
+const Genero = require("../models/genero")
+const Pelicula = require("../models/pelicula")
+const Personaje = require("../models/personaje")
 
 const peliControllers = {
 
     listarPeliSeries: async (req,res)=>{
         try {
-            let peliSeries = await PeliSerie.findAll()
-            return res.status(200).json(peliSeries)
+            if (req.query.name) {
+                let peliculas = await Pelicula.findAll({where: {titulo: req.query.name}, attributes: ['imagen','titulo','creacion'], include: {model: Genero, attributes: ['id','nombre']}})
+                return res.status(200).json(peliculas)
+            } else if (req.query.genre) {
+                let peliculas = await Pelicula.findAll({attributes: ['imagen','titulo','creacion'], include: {model: Genero, attributes: ['id','nombre'], where: {id: req.query.genre}}})
+                return res.status(200).json(peliculas)
+            } else {
+                let peliculas = await Pelicula.findAll({attributes: ['imagen','titulo','creacion']})
+                return res.status(200).json(peliculas)
+            }
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 
     unaPeliSerie: async (req,res)=>{
         let id = req.params.id
         try {
-            let peliSerie = await PeliSerie.findOne({where: {id:id}})
-            return res.status(200).json(peliSerie)
+            let pelicula = await Pelicula.findOne({
+                where: {id:id},
+                include: {model: Personaje, attributes: ['imagen','nombre']},
+                include: {model: Genero, attributes: ['imagen','nombre']},
+            })
+            if (!pelicula) {
+                return res.status(404).send('no encontrado')
+            }
+            return res.status(200).json(pelicula)
         } catch(error) {
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 

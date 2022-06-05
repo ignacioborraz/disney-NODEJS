@@ -13,7 +13,7 @@ app.set('port',PORT)
 app.use(express.json())
 app.use(cors())
 
-//app.use('/', Router)
+app.use('/', Router)
 app.get('/', (req,res)=> res.send('DISNEY API'))
 
 app.listen(app.get('port'), async function() {
