@@ -1,16 +1,14 @@
 # DISNEY API REST
 
-👉 Se utilizó NodeJs y Express.
-
-👉 Utiliza la librería Sequelize para trabajar con la base de datos de MySQL.
+👉 Se utilizó NodeJs y Express para programar el servidor y Sequelize para trabajar con la base de datos de MySQL.
 
 👉 No se desarrolló el Frontend.
 
-👉 No se desarrolló el Frontend.
+👉 Tiene configurada dos variables de entorno (una para el numero del puerto y otra para validar SendGri).
 
 ---
 ## Iniciar App
-Desde la consola con npm install para instalar las dependencias y luego npm start
+Desde la consola con "npm install" para instalar las dependencias y luego "npm start"
 
 ---
 ## Cargar Datos
@@ -18,7 +16,7 @@ Desde la consola con npm run seeds, se conecta a una base de datos de AWS.
 
 ---
 ## Iniciar Tests
-De usuarios con jest y supertest. Desde la consola con npm run test
+De usuarios con jest y supertest. Desde la consola con "npm run test"
 
 ---
 ## Modelos
