@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const passport = require('../config/passport')
 
 const {listarGeneros,unGenero,crearGenero,modificarGenero,eliminarGenero} = require('../controllers/genero')
 router.get('/genre', listarGeneros)
@@ -22,11 +21,9 @@ router.put('/movies/:id', modificarPeliSerie)
 router.post('/movies', crearPeliSerie)
 router.delete('/movies/:id', eliminarPeliSerie)
 
-const {ingresar,registrar,enviarVerificacion,verificarUsuario,verificarToken} = require('../controllers/usuario')
+const {ingresar,registrar,verificarUsuario,verificarToken} = require('../controllers/usuario')
 router.post('/auth/login', ingresar)
 router.post('/auth/register', registrar)
-router.post('/mail', enviarVerificacion)
 router.get('/verify/:claveUnica', verificarUsuario)
-//router.get(passport.authenticate('jwt', {session:false}), verificarToken)
 
 module.exports = router

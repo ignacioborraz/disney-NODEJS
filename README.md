@@ -1,14 +1,27 @@
 # DISNEY API REST
 
-Desarrollar una API para explorar el mundo de Disney, la cual permitirá conocer y modificar los personajes que lo componen y entender en qué películas estos participaron. Por otro lado, deberá exponer la información para que cualquier frontend pueda consumirla.
+👉 Se utilizó NodeJs y Express.
 
-👉 Utilizar NodeJs y Express.
-👉 No es necesario armar el Frontend.
-👉 Las rutas deberán seguir el patrón REST.
-👉 Utilizar la librería Sequelize.
+👉 Utiliza la librería Sequelize para trabajar con la base de datos de MySQL.
+
+👉 No se desarrolló el Frontend.
+
+👉 No se desarrolló el Frontend.
 
 ---
-## Modelado de Base de Datos
+## Iniciar App
+Desde la consola con npm install para instalar las dependencias y luego npm start
+
+---
+## Cargar Datos
+Desde la consola con npm run seeds, se conecta a una base de datos de AWS.
+
+---
+## Iniciar Tests
+De usuarios con jest y supertest. Desde la consola con npm run test
+
+---
+## Modelos
 >**Personaje**
 
 Listado, Creación, Edición y Eliminación, Detalles y Búsqueda
@@ -19,18 +32,16 @@ Ver documentación: *https://documenter.getpostman.com/view/19873405/Uz5JFuBa*
 
 Listado, Creación, Edición y Eliminación, Detalles y Búsqueda
 
-[*https://documenter.getpostman.com/view/19873405/Uz5JFuFw*]( *ver documentación* "ver documentación")
+Ver documentación: *https://documenter.getpostman.com/view/19873405/Uz5JFuFw*
 
 >**Género**
 
 ---
 ## Autenticación de usuarios
-Con JWT (no está funcionando)
+
+Registro e Ingreso de usuarios
+
+Ver documentación: *https://documenter.getpostman.com/view/19873405/Uz5JFuiR*
 
 ---
-## Envío de emails
-Gracias a SendGri
-
----
-## Tests
-De usuarios con jest y supertest
+## Envío de correos de verificación con SendGri

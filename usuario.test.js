@@ -22,29 +22,3 @@ it('usuario inició sesión', async () => {
         })
         .expect(200)
 })
-
-it('envia correctamente el correo', async () => {
-    return request(app)
-        .post('/mail')
-        .send({
-            to: 'ijb9790@gmail.com',
-            subject: 'Hola',
-            text: 'Texto',
-            html: '<strong>Hola</strong>',
-            sandboxMode: true
-        })
-        .expect(201)
-})
-
-it('error por datos invalidos para el envío de correo de verificacion', async () => {
-    return request(app)
-        .post('/mail')
-        .send({
-            to: 'ijb9790',
-            subject: '',
-            text: '',
-            html: '<strong>Hola</strong>',
-            sandboxMode: true
-        })
-        .expect(400)
-})
