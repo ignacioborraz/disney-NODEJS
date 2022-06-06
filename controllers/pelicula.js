@@ -18,6 +18,7 @@ const controladorPelicula = {
                 return res.status(200).json(peliculas)
             }
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     },
@@ -35,6 +36,7 @@ const controladorPelicula = {
             }
             return res.status(200).json(pelicula)
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     },
@@ -46,7 +48,7 @@ const controladorPelicula = {
             return res.status(201).json(nuevaPeliSerie)
         } catch(error) {
             console.log(error)
-            return res.status(400).json(error)
+            return res.status(500).json(error)
         }
     },
 
@@ -56,14 +58,16 @@ const controladorPelicula = {
         try {
             let peliSerie = await PeliSerie.findOne({where: {id:id}})
             try {
-                let peliSerieModificada = await PeliSerie.update(req.body, {where: {id:id}})
+                let peliSerieModificada = await PeliSerie.update({imagen,titulo,genero,calificacion,creacion,personajes}, {where: {id:id}})
                 peliSerieModificada = await PeliSerie.findOne({where: {id:id}})
-                return res.status(200).json(peliSerieModificada)
+                return res.status(201).json(peliSerieModificada)
             } catch(error) {
-                return res.status(400).json(error)
+                console.log(error)
+                return res.status(500).json(error)
             }
         } catch(error) {
-            return res.status(400).json(error)
+            console.log(error)
+            return res.status(500).json(error)
         }
     },
 
@@ -72,13 +76,15 @@ const controladorPelicula = {
         try {
             let peliSerie = await PeliSerie.findOne({where: {id:id}})
             try {
-                let peliSerieEliminada = await PeliSerie.destroy({where: {id:id}})
-                return res.status(200).json(peliSerie)
+                await PeliSerie.destroy({where: {id:id}})
+                return res.status(201).json(peliSerie)
             } catch(error) {
-                return res.status(400).json(error)
+                console.log(error)
+                return res.status(500).json(error)
             }
         } catch(error) {
-            return res.status(400).json(error)
+            console.log(error)
+            return res.status(500).json(error)
         }
     } 
 

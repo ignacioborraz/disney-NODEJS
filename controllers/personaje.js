@@ -22,6 +22,7 @@ const controladorPersonaje = {
                 return res.status(200).json(personajes)
             }
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     },
@@ -38,6 +39,7 @@ const controladorPersonaje = {
             }
             return res.status(200).json(personaje)
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     },
@@ -65,10 +67,12 @@ const controladorPersonaje = {
                     await Personaje.update({imagen,nombre,edad,peso,historia,peliSerie}, {where: {id:id}})
                     return res.status(200).send('personaje modificado')
                 } catch(error) {
+                    console.log(error)
                     return res.status(500).json(error)
                 }
             }
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     },
@@ -84,10 +88,12 @@ const controladorPersonaje = {
                     await Personaje.destroy({where: {id:id}})
                     return res.status(200).send('personaje eliminado')
                 } catch(error) {
+                    console.log(error)
                     return res.status(500).json(error)
                 }
             }
         } catch(error) {
+            console.log(error)
             return res.status(500).json(error)
         }
     }
