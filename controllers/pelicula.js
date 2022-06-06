@@ -2,12 +2,13 @@ const Genero = require("../models/genero")
 const Pelicula = require("../models/pelicula")
 const Personaje = require("../models/personaje")
 
-const peliControllers = {
+const controladorPelicula = {
 
     listarPeliSeries: async (req,res)=>{
         try {
             if (req.query.name) {
-                let peliculas = await Pelicula.findAll({where: {titulo: req.query.name}, attributes: ['imagen','titulo','creacion'], include: {model: Genero, attributes: ['id','nombre']}})
+                //let peliculas = await Pelicula.findAll({where: {titulo: req.query.name}, attributes: ['imagen','titulo','creacion']})
+                let peliculas = await Pelicula.findAll({where: {titulo: req.query.name}, attributes: ['imagen','titulo','creacion'], include: {model: Personaje, attributes: ['id','nombre']}})
                 return res.status(200).json(peliculas)
             } else if (req.query.genre) {
                 let peliculas = await Pelicula.findAll({attributes: ['imagen','titulo','creacion'], include: {model: Genero, attributes: ['id','nombre'], where: {id: req.query.genre}}})
@@ -83,4 +84,4 @@ const peliControllers = {
 
 }
 
-module.exports = peliControllers
+module.exports = controladorPelicula

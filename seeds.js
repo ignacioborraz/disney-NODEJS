@@ -2,6 +2,7 @@ const sequelize = require('./config/sequelize')
 const Genero = require("./models/genero")
 const PeliSerie = require("./models/pelicula")
 const Personaje = require("./models/personaje")
+
 require('./config/associations')
 
 sequelize.sync({force: false}).then(async () => {

@@ -1,6 +1,6 @@
 const Genero = require("../models/genero")
 
-const generoControllers = {
+const controladorGenero = {
 
     listarGeneros: async (req,res)=>{
         try {
@@ -66,4 +66,4 @@ const generoControllers = {
 
 }
 
-module.exports = generoControllers
+module.exports = controladorGenero

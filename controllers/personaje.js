@@ -1,7 +1,7 @@
 const Personaje = require("../models/personaje")
 const Pelicula = require("../models/pelicula")
 
-const personajeControllers = {
+const controladorPersonaje = {
 
     listarPersonajes: async (req,res)=>{
         try {
@@ -94,4 +94,4 @@ const personajeControllers = {
 
 }
 
-module.exports = personajeControllers
+module.exports = controladorPersonaje

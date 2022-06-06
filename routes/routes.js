@@ -1,11 +1,12 @@
 const router = require('express').Router()
+const passport = require('../config/passport')
 
 const {listarGeneros,unGenero,crearGenero,modificarGenero,eliminarGenero} = require('../controllers/genero')
-router.get('/genero/listar', listarGeneros)
-router.get('/genero/listar/:id', unGenero)
-router.put('/genero/modificar/:id', modificarGenero)
-router.post('/genero/crear', crearGenero)
-router.delete('/genero/eliminar/:id', eliminarGenero)
+router.get('/genre', listarGeneros)
+router.get('/genre/:id', unGenero)
+router.put('/genre/:id', modificarGenero)
+router.post('/genre', crearGenero)
+router.delete('/genre/:id', eliminarGenero)
 
 const {listarPersonajes,unPersonaje,crearPersonaje,modificarPersonaje,eliminarPersonaje} = require('../controllers/personaje')
 router.get('/characters', listarPersonajes)
@@ -20,5 +21,12 @@ router.get('/movies/:id', unaPeliSerie)
 router.put('/movies/:id', modificarPeliSerie)
 router.post('/movies', crearPeliSerie)
 router.delete('/movies/:id', eliminarPeliSerie)
+
+const {ingresar,registrar,enviarVerificacion,verificarUsuario,verificarToken} = require('../controllers/usuario')
+router.post('/auth/login', ingresar)
+router.post('/auth/register', registrar)
+router.post('/mail', enviarVerificacion)
+router.get('/verify/:claveUnica', verificarUsuario)
+//router.get(passport.authenticate('jwt', {session:false}), verificarToken)
 
 module.exports = router
