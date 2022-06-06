@@ -12,7 +12,9 @@ Desarrollar una API para explorar el mundo de Disney, la cual permitirá conocer
 >**Personaje**
 
 Listado, Creación, Edición y Eliminación, Detalles y Búsqueda
-[*https://documenter.getpostman.com/view/19873405/Uz5JFuBa*]( *ver documentación* "ver documentación")
+
+[*ver documentación*]( *https://documenter.getpostman.com/view/19873405/Uz5JFuBa* "ver documentación")
+
 >**Película/Serie**
 
 Listado, Creación, Edición y Eliminación, Detalles y Búsqueda
